@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:06:49 by aurban            #+#    #+#             */
-/*   Updated: 2023/11/23 16:23:22 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/02 22:08:47 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	ft_send_char(char *buffer, t_bd *bd, char c)
 {
 	if (bd->offset == SBUFSIZ)
-		ft_flush(1, buffer, bd);
+		ft_flush(buffer, bd);
 	if (c == '\n')
 	{
 		buffer[bd->offset++] = c;
-		ft_flush(1, buffer, bd);
+		ft_flush(buffer, bd);
 	}
 	else
 		buffer[bd->offset++] = c;
@@ -39,11 +39,11 @@ void	ft_send_str(char *buffer, t_bd *bd, const char *str)
 	while (*str)
 	{
 		if (bd->offset == SBUFSIZ)
-			ft_flush(1, buffer, bd);
+			ft_flush(buffer, bd);
 		if (*str == '\n')
 		{
 			buffer[bd->offset++] = *(str++);
-			ft_flush(1, buffer, bd);
+			ft_flush(buffer, bd);
 		}
 		else
 			buffer[bd->offset++] = *(str++);

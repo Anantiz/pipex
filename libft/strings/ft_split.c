@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:47:13 by aurban            #+#    #+#             */
-/*   Updated: 2023/11/16 13:42:03 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/02 19:31:25 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ char	**ft_split(const char *s, char c)
 		return (NULL);
 	while (j < count)
 	{
-		if (s[i] == c)
+		if (s[i] == c || s[i] == '\0')
 		{
-			if (s + i != s || s[i] == '\0')
+			if (&s[i] != s || s[i] == '\0')
 			{
 				strs[j++] = ft_substr(s, 0, i);
 				if (check_error(strs, j))

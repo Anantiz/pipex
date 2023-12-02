@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:42:06 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/02 01:16:27 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/02 21:16:15 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*get_next_line(int fd, int reset)
 	{
 		free(gnl_get_buff(fd, buffers_list));
 		buffers_list[fd] = NULL;
-		return ;
+		return (NULL);
 	}
 	buff = gnl_get_buff(fd, buffers_list);
 	if (!buff)
