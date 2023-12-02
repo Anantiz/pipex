@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:42:06 by aurban            #+#    #+#             */
-/*   Updated: 2023/11/26 18:06:00 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/02 01:16:27 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ static char	*read_buffer(int fd, char *buff, char *line)
 	}
 }
 
-
+/*
+reset == true 
+	will free buffer of given fd
+*/
 char	*get_next_line(int fd, int reset)
 {
 	static char	*buffers_list[MAX_FD_HANDLE];

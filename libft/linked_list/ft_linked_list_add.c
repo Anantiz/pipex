@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:35:02 by aurban            #+#    #+#             */
-/*   Updated: 2023/11/24 16:18:07 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/02 01:15:31 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_nodeint	*ft_llint_data_add_back(t_llint *list, long data)
 		node->previous = list->last;
 		list->last->next = node;
 	}
+	else
+		node->previous = NULL;
 	list->last = node;
 	list->size++;
 	if (list->head == NULL)
