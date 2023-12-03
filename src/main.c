@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:15:51 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/02 23:35:35 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 03:42:38 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,20 @@ int	main(int argc, char **argv, char **envp)
 {
 	char	***commands;
 
+	// for (int x=0;envp[x];x++)
+	// 	printf("%s\n", envp[x]);
 	if (argc == 1)
 		return (0);
 	if (argc != 5)
 		return (msg_wrong_use(0));
 	commands = args_parser(argc, argv + 1);
+	// for (int y=0; commands[1][y]; y++)
+	// 	printf("%s\n", commands[1][y]);
 	if (validate_args(commands))
 		exit_clean(commands, EXIT_FAILURE);
 	pipex_start(commands, envp);
 	free_triple_char(commands);
+	// char *strs[4] = {"sed", "\'s/a/A/g\'", "hey" , NULL};
+	// execve("/bin/sed", strs, envp);
 	return (0);
 }

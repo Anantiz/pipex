@@ -6,13 +6,13 @@
 #    By: aurban <aurban@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 12:48:20 by aurban            #+#    #+#              #
-#    Updated: 2023/12/03 00:16:15 by aurban           ###   ########.fr        #
+#    Updated: 2023/12/03 03:34:52 by aurban           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC:=gcc
 INCLUDE_PATH=./includes
-CFLAGS:=-Wall -Werror -Wextra -I$(INCLUDE_PATH) -g3 -fsanitize=address
+CFLAGS:=-Wall -Wextra -I$(INCLUDE_PATH) -g3 -fsanitize=address
 RM:=rm -rf
 
 NAME:=pipex
@@ -20,7 +20,7 @@ NAME:=pipex
 SRC_PATH:=./src
 LIBFT_PATH:=./libft
 
-SRC_FILES:=main.c parser.c utils.c pipex.c pipex_files.c
+SRC_FILES:=main.c parser.c utils.c pipex.c pipex_io_files.c pipex_group_chat.c
 
 SRC_FILES:= $(addprefix $(SRC_PATH)/,$(SRC_FILES))
 SRC_OBJECTS:= $(patsubst %.c,%.o,$(SRC_FILES))

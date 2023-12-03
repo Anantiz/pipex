@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/03 01:30:28 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 02:25:40 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define PIPEX_H
 
 # include "libft.h"
+# include <fcntl.h>
 # include <errno.h>
 # include <sys/types.h>
-# include <fcntl.h>
+# include <sys/wait.h>
 #include <stdio.h>
 
 /* PARSING */
@@ -27,6 +28,9 @@ int			validate_args(char ***commands);
 /* CORE */
 
 int			pipex_start(char ***commands, char **envp);
+
+ssize_t		write_buffer_to_child(char *buff, int fd);
+char		*write_child_to_buffer(char *buff, int fd);
 
 ssize_t		ft_write_fd(int fd, char *content);
 char		*ft_read_fd(int fd);
