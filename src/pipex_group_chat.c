@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 01:57:40 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/03 04:12:52 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 04:25:54 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ ssize_t	write_buffer_to_child(char *buff, int fd)
 		return (-1);
 	}
 	nwrite = ft_write_fd(fd, buff);
-	nwrite += write(fd, "", 1);
 	return (nwrite);
 }
 
