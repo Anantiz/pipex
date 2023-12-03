@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 00:16:19 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/03 04:22:08 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 17:31:44 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 #define LOCAL_READ_SIZE 256
 
-static void	ft_read_fd_cpy_content(char *buff, char **content, size_t *offset, ssize_t nread)
+static void	cpy_cntnt(char *buff, char **content, size_t *off7, ssize_t nread)
 {
 	ssize_t	i;
-	
+
 	i = 0;
 	while (i < nread && buff[i])
 	{
 		*content = resize_line((*content), nread);
 		if (!(*content))
 			return ;
-		(*content)[i + (*offset)] = buff[i];
+		(*content)[i + (*off7)] = buff[i];
 		i++;
 	}
-	*offset += i;
+	*off7 += i;
 }
 
 char	*ft_read_fd(int fd)
@@ -49,7 +49,7 @@ char	*ft_read_fd(int fd)
 			return (NULL);
 		}
 		if (nread)
-			ft_read_fd_cpy_content(buff, &content, &offset, nread);
+			cpy_cntnt(buff, &content, &offset, nread);
 		if (!content)
 			return (NULL);
 	}
@@ -60,12 +60,12 @@ char	*write_infile_to_buff(char *infile_path)
 {
 	int		fd;
 	char	*content;
-	
+
 	if (!infile_path)
 		return (NULL);
 	fd = open(infile_path, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
+		return (perror("Failed to read in-file"), NULL);
 	content = ft_read_fd(fd);
 	close(fd);
 	return (content);
@@ -87,12 +87,12 @@ ssize_t	write_buff_to_outfile(char *outfile_path, char *buffer)
 {
 	int		fd;
 	ssize_t	nwrite;
-	
+
 	if (!outfile_path || !buffer)
 		return (-1);
-	fd = open(outfile_path, O_WRONLY | O_CREAT | O_TRUNC, 0644); // Check permission shit
+	fd = open(outfile_path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
-		return (-1);
+		return (perror("Could not open outfile"), -1);
 	nwrite = ft_write_fd(fd, buffer);
 	if (nwrite < 0)
 		ft_printf_fd(2, "Write Error, could not write to file\n");

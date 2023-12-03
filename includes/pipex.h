@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/03 02:25:40 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 17:25:06 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int			validate_args(char ***commands);
 
 /* CORE */
 
-int			pipex_start(char ***commands, char **envp);
+int			pipex_start(char ***commands, int argc, char **envp);
 
+// int			**init_pipes_stream(int cmd_count);
+// void		free_pipes(int **pipes, int i);
 ssize_t		write_buffer_to_child(char *buff, int fd);
 char		*write_child_to_buffer(char *buff, int fd);
 
