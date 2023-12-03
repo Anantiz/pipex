@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/02 23:40:41 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 01:30:28 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <errno.h>
 # include <sys/types.h>
+# include <fcntl.h>
 #include <stdio.h>
 
 /* PARSING */
@@ -26,6 +27,18 @@ int			validate_args(char ***commands);
 /* CORE */
 
 int			pipex_start(char ***commands, char **envp);
+
+ssize_t		ft_write_fd(int fd, char *content);
+char		*ft_read_fd(int fd);
+char		*write_infile_to_buff(char *infile);
+ssize_t		write_buff_to_outfile(char *outfile_path, char *buffer);
+
+
+/*
+DATA-STREAMS ------------------------------------------------------------------
+*/
+
+char		*ft_read_fd(int fd);
 
 /*
 UTILS

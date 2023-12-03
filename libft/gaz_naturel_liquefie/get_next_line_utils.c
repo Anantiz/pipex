@@ -6,14 +6,15 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:13:20 by aurban            #+#    #+#             */
-/*   Updated: 2023/11/26 15:50:37 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 00:25:24 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-Une sorte de join modifier
+Creates a new string with 'added_size' null padding
+copy the content of s1 into new
 */
 char	*resize_line(char *s1, size_t added_size)
 {

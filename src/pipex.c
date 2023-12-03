@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 22:48:51 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/02 23:54:29 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 01:50:25 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	pipex_start(char ***commands, char **envp)
 {
 	int		child_to_daddy[2];
 	int		daddy_to_child[2];
-	char	*buffer; // Bufferize strems in-between pipes
+	char	*buffer; // Bufferize streams in-between pipes
 	pid_t	pid;
 	size_t	i;
 	
@@ -34,7 +34,7 @@ int	pipex_start(char ***commands, char **envp)
 		perror("Pipe: Daddy_to_child failed");
 		exit_clean(commands, EXIT_FAILURE);
 	}
-	/* TO DO: write in-file to buffer*/
+	buffer = write_infile_to_buff(commands[0]);
 	i = 1; // commands[0] is in-file
 	while (commands[i] && commands[i + 1])
 	{
@@ -68,6 +68,7 @@ int	pipex_start(char ***commands, char **envp)
 		}
 		i++;
 	}
-	/* TO DO : writes buffer to commands[last] a.k.a out-file*/
+	write_buff_to_outfile(commands[i][0], buffer);
+	free(buffer);
 	return (0);
 }

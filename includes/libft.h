@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:44:18 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/02 23:42:28 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 01:01:04 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void		ft_putnbr_fd(int n, int fd);
 LINKED LIST
 */
 
-# ifdef CMPL_LLIST
-
 typedef struct s_nodeint
 {
 	long				data;
@@ -108,8 +106,6 @@ void		ft_llint_swap_data_front(t_llint *list);
 void		ft_llint_print(t_llint *list);
 void		ft_llint_printm(t_llint *list);
 void		*ft_llint_search_list(t_llint *list, long n);
-
-# endif
 
 /* 
 PRINTF
@@ -140,16 +136,15 @@ void		ft_send_uint(char *buffer, t_bd *bd, unsigned int n);
 GAZ NATUREL LIQUEFIE
 */
 
-# ifdef CMPL_GNL
-#  ifndef BUFFER_SIZE
-#   define BUFFER_SIZE 256
-#  endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 256
+# endif
 
-#  if (BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
-#   define BUFFER_SIZE 4096
-#  endif
+# if (BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
+#  define BUFFER_SIZE 4096
+# endif
 
-#  define MAX_FD_HANDLE 1024
+# define MAX_FD_HANDLE 1024
 
 char		*get_next_line(int fd, int reset);
 
@@ -157,6 +152,5 @@ char		*gnl_get_buff(int fd, char **buffers_list);
 ssize_t		gnl_refill_buff(int fd, char *buff);
 char		*resize_line(char *s1, size_t added_size);
 char		*str_nulltrim(char *str);
-# endif
 
 #endif

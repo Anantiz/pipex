@@ -6,7 +6,7 @@
 #    By: aurban <aurban@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 06:06:39 by aurban            #+#    #+#              #
-#    Updated: 2023/12/02 22:26:59 by aurban           ###   ########.fr        #
+#    Updated: 2023/12/03 00:28:35 by aurban           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ FT_FILES:=		\
 
 # --- LINKED LIST ---
 
-# CFLAGS+=-D CMPL_LLIST
 # FT_LINKED_LIST_PATH:=linked_list
 # FT_LINKED_LIST_FILES:=\
 # 	ft_linked_list_add.c	ft_linked_list_del.c	ft_linked_list_init.c	\
@@ -47,7 +46,6 @@ FT_PRINTF_FILES:=$(addprefix $(FT_PRINTF_PATH)/,$(FT_PRINTF_FILES))
 
 # --- GET NEXT LINE ---
 
-CFLAGS+=-D CMPL_GNL
 FT_GNL_PATH=gaz_naturel_liquefie
 FT_GNL_FILES=get_next_line.c	get_next_line_utils.c
 FT_GNL_FILES:=$(addprefix $(FT_GNL_PATH)/,$(FT_GNL_FILES))
