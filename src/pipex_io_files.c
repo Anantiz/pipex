@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 00:16:19 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/03 17:31:44 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/03 18:08:46 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ ssize_t	ft_write_fd(int fd, char *content)
 	ssize_t	nwrite;
 
 	if (!content)
-		return (0);
+		return (-1);
 	len = ft_strlen(content);
 	nwrite = write(fd, content, len);
 	return (nwrite);
