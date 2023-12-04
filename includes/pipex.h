@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/03 18:17:25 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/04 17:26:29 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_stream_data
 	int		*daddy;
 	int		*child;
 	char	***cmds_files;
-	char	**cmds_path;
+	char	***cmds_paths;
 	size_t	i;
 	pid_t	pid;
 	int		wstatus;
