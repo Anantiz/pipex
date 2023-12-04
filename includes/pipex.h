@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/04 17:26:29 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/04 22:59:09 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ typedef struct s_stream_data
 /* PARSING */
 char		***args_parser(int argc, char **argv);
 char		***free_triple_char(char ***ccc);
+char		**free_double_char(char **cc);
 int			validate_args(char ***commands);
+char		***get_commands_paths(int argc, char ***cmds, char **envp);
 
 /* CORE */
 
@@ -57,7 +59,7 @@ char		*write_infile_to_buff(char *infile);
 UTILS
 */
 
-void		exit_clean(char ***ccc, int status);
+void		exit_clean(t_sdata *sd, int status);
 void		clean_cmd_paths(char **cmds_path, int size);
 int			msg_invalid_cmd(char *s, int r);
 int			msg_denied_cmd(char *s, int r);

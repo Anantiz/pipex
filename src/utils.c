@@ -6,15 +6,16 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:37:14 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/04 14:02:34 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/04 21:52:37 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	exit_clean(char ***ccc, int status)
+void	exit_clean(t_sdata *sd, int status)
 {
-	free_triple_char(ccc);
+	free_triple_char(sd->cmds_files);
+	free_triple_char(sd->cmds_paths);
 	exit(status);
 }
 

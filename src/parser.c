@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:31:52 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/02 23:14:08 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/04 22:59:30 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ char	***free_triple_char(char ***ccc)
 		free(ccc[i++]);
 	}
 	free(ccc);
+	return (NULL);
+}
+
+char	**free_double_char(char **cc)
+{
+	size_t	i;
+
+	if (!cc)
+		return (NULL);
+	i = 0;
+	while (cc[i])
+		free(cc[i++]);
+	free(cc);
 	return (NULL);
 }
 
