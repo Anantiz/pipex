@@ -6,14 +6,13 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 22:48:51 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/04 23:11:27 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:52:51 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 /*
-	// You might WANT TO SECURE dup2()
 	dup2(sd->daddy[0], 0); // Parent writes to childs stdin
 	dup2(sd->child[1], 1); // Redirect child stdout to parent
 */
@@ -35,9 +34,6 @@ static void	pipex_fork_child(t_sdata *sd, char **envp)
 	j = 0;
 	while (sd->cmds_paths[i - 1][j])
 	{
-		// ft_printf_fd(2, "PATH:%s\n", sd->cmds_paths[i - 1][j]);
-		// ft_printf_fd(2, "CMD :%s\n", sd->cmds_files[i][0]);
-		// fflush(NULL);		
 		execve(sd->cmds_paths[i - 1][j], sd->cmds_files[i], envp);
 		j++;
 	}
@@ -93,19 +89,23 @@ int	pipex_start(char ***cmds_files, int argc, char **envp)
 {
 	int		daddy[2];
 	int		child[2];
-	char	***cmds_paths;
 	char	*buffer;
 	t_sdata	sd;
 
 	buffer = write_infile_to_buff(cmds_files[0][0]);
-	cmds_paths = get_commands_paths(argc, cmds_files, envp);
-	sd = (t_sdata){daddy, child, cmds_files, cmds_paths, 0, 0, 0};
-	if (!buffer || !cmds_paths)
+	sd = (t_sdata){daddy, child, cmds_files, NULL, 0, 0, 0};
+	sd.cmds_paths = get_commands_paths(argc - 1, cmds_files, envp);
+	if (!buffer || !sd.cmds_paths)
+	{
+		if (buffer)
+			free(buffer);
 		exit_clean(&sd, EXIT_FAILURE);
+	}
 	sd.i = 1;
 	while (cmds_files[sd.i] && cmds_files[sd.i + 1])
 		pipex_loop(&sd, envp, &buffer);
 	write_buff_to_outfile(cmds_files[sd.i][0], buffer);
 	free(buffer);
+	free_triple_char(sd.cmds_paths);
 	return (0);
 }

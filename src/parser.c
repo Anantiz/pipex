@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:31:52 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/04 22:59:30 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:32:43 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ char	**free_double_char(char **cc)
 	return (NULL);
 }
 
+char	**parser_get_item(char **argv, size_t i)
+{
+	char	**item;
+
+	if (!argv[i])
+		return (NULL);
+	item = ft_calloc(2, sizeof(char *));
+	if (!item)
+		return (NULL);
+	item[0] = ft_strdup(argv[i]);
+	return (item);
+}
+
 char	***args_parser(int argc, char **argv)
 {
 	char	***commands;
@@ -56,13 +69,20 @@ char	***args_parser(int argc, char **argv)
 	if (!commands)
 		return (NULL);
 	i = 0;
-	while (argv[i])
+	commands[i] = parser_get_item(argv, i);
+	if (!commands[i])
+		return (free_triple_char(commands));
+	i++;
+	while (argv[i] && argv[i + 1])
 	{
 		command = ft_split(argv[i], ' ');
 		if (!command)
 			return (free_triple_char(commands));
 		commands[i++] = command;
 	}
+	commands[i] = parser_get_item(argv, i);
+	if (!commands[i])
+		return (free_triple_char(commands));
 	return (commands);
 }
 
@@ -78,8 +98,9 @@ int	validate_args(char ***commands)
 	i = 0;
 	if (!(commands[i]) || !(*(commands[i])) || (*(commands[i]))[0] == '\0')
 		return (msg_empty_arg(i, 1));
-	if (access(*commands[i++], R_OK))
-		return (msg_invalid_file(*commands[i - 1], 1));
+	if (access(*commands[i], R_OK))
+		return (msg_invalid_file(*commands[i], 1));
+	i++;
 	while (commands[i] && commands[i + 1])
 	{
 		if (!(*(commands[i])) || (*(commands[i]))[0] == '\0')

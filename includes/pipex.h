@@ -6,11 +6,11 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/04 22:59:09 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/05 15:39:22 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  PIPEX_H
+#ifndef PIPEX_H
 # define PIPEX_H
 
 # include "libft.h"

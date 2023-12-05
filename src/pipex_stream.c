@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:50:32 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/04 23:04:37 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:00:28 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,11 @@ char	***get_commands_paths(int argc, char ***cmds, char **envp)
 	envp_paths = get_envp_path(envp);
 	if (!envp_paths)
 		return (NULL);
-	cmds_paths = ft_calloc(argc - 1, sizeof(char **)); // Make list of list of path
+	cmds_paths = ft_calloc(argc, sizeof(char **)); // Make list of list of path
 	if (!cmds_paths)
 		return (NULL);
 	i = 1;
-	while (i < argc - 1)
+	while (i < argc)
 	{
 		cmds_paths[i - 1] = getpaths2(envp_paths, cmds, i);
 		if (!cmds_paths[i - 1])
