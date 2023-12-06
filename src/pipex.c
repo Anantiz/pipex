@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 22:48:51 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/05 16:52:51 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 12:46:51 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	pipex_start(char ***cmds_files, int argc, char **envp)
 	sd.i = 1;
 	while (cmds_files[sd.i] && cmds_files[sd.i + 1])
 		pipex_loop(&sd, envp, &buffer);
-	write_buff_to_outfile(cmds_files[sd.i][0], buffer);
+	write_buff_to_outfile(cmds_files[sd.i][0], buffer, 0);
 	free(buffer);
 	free_triple_char(sd.cmds_paths);
 	return (0);

@@ -6,43 +6,11 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:31:52 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/05 17:32:43 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 12:16:55 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-char	***free_triple_char(char ***ccc)
-{
-	size_t	i;
-	size_t	j;
-
-	if (!ccc)
-		return (NULL);
-	i = 0;
-	while (ccc[i])
-	{
-		j = 0;
-		while (ccc[i][j])
-			free(ccc[i][j++]);
-		free(ccc[i++]);
-	}
-	free(ccc);
-	return (NULL);
-}
-
-char	**free_double_char(char **cc)
-{
-	size_t	i;
-
-	if (!cc)
-		return (NULL);
-	i = 0;
-	while (cc[i])
-		free(cc[i++]);
-	free(cc);
-	return (NULL);
-}
 
 char	**parser_get_item(char **argv, size_t i)
 {

@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/05 15:39:22 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 12:49:13 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char		*ft_read_fd(int fd);
 ssize_t		ft_write_fd(int fd, char *content);
 ssize_t		write_buffer_to_child(char *buff, int fd);
 char		*write_child_to_buffer(char *buff, int fd);
-ssize_t		write_buff_to_outfile(char *outfile_path, char *buffer);
+ssize_t		write_buff_to_outfile(char *outfile_path, char *buffer, int append);
 char		*write_infile_to_buff(char *infile);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 00:16:19 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/03 18:08:46 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 12:46:03 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,17 @@ ssize_t	ft_write_fd(int fd, char *content)
 	return (nwrite);
 }
 
-ssize_t	write_buff_to_outfile(char *outfile_path, char *buffer)
+ssize_t	write_buff_to_outfile(char *outfile_path, char *buffer, int append)
 {
 	int		fd;
 	ssize_t	nwrite;
 
 	if (!outfile_path || !buffer)
 		return (-1);
-	fd = open(outfile_path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (append)
+		fd = open(outfile_path, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	else
+		fd = open(outfile_path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		return (perror("Could not open outfile"), -1);
 	nwrite = ft_write_fd(fd, buffer);
