@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:31:52 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/06 12:16:55 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 13:59:15 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ char	**parser_get_item(char **argv, size_t i)
 {
 	char	**item;
 
-	if (!argv[i])
-		return (NULL);
 	item = ft_calloc(2, sizeof(char *));
 	if (!item)
 		return (NULL);
-	item[0] = ft_strdup(argv[i]);
+	if (argv[i])
+		item[0] = ft_strdup(argv[i]);
+	else
+		item[0] = ft_strdup("");
 	return (item);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:34:08 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/06 12:49:13 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:15:50 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <errno.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-#include <stdio.h>
+# include <stdio.h>
 
 typedef struct s_stream_data
 {
@@ -41,8 +41,7 @@ char		***get_commands_paths(int argc, char ***cmds, char **envp);
 /* CORE */
 
 int			pipex_start(char ***commands, int argc, char **envp);
-// int		**init_pipes_stream(int cmd_count);
-// void		free_pipes(int **pipes, int i);
+char		**parser_get_item(char **argv, size_t i);
 
 /*
 DATA-STREAMS ------------------------------------------------------------------

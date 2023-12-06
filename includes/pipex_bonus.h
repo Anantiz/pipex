@@ -16,7 +16,8 @@
 # include "libft.h"
 # include "pipex.h"
 
-int	validate_args_bonus(char ***commands, char **buffer);
-int	pipex_start_bonus(char ***commands, int argc, char **envp, char *buffer);
+int		validate_args_bonus(char ***commands, char **buffer);
+int		pipex_start_bonus(char ***commands, int argc, char **envp, char *buff);
+char	***args_parser_bonus(int argc, char **argv);
 
 #endif

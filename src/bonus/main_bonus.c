@@ -6,7 +6,7 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:15:51 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/06 12:44:07 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:21:28 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **envp)
 		return (0);
 	if (argc < 5 || (argc < 6 && ft_strncmp(argv[1], "here_doc", 9) == 0))
 		return (msg_wrong_use(0));
-	commands = args_parser(argc, argv + 1);
+	commands = args_parser_bonus(argc, argv + 1);
 	buffer = NULL;
 	if (validate_args_bonus(commands, &buffer))
 	{

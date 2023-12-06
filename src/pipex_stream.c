@@ -6,45 +6,11 @@
 /*   By: aurban <aurban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:50:32 by aurban            #+#    #+#             */
-/*   Updated: 2023/12/05 16:00:28 by aurban           ###   ########.fr       */
+/*   Updated: 2023/12/06 14:11:05 by aurban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-// void	free_pipes(int **pipes, int i)
-// {
-// 	if (!pipes)
-// 		return ;
-// 	while (i > 0)
-// 		free(pipes[i--]);
-// 	free(pipes);
-// 	return ;
-// }
-
-// int	**init_pipes_stream(int cmd_count)
-// {
-// 	int	**pipes;
-// 	int	i;
-
-// 	pipes = malloc((cmd_count + 1) * sizeof(int *));
-// 	if (!pipes)
-// 		return (NULL);
-// 	i = 0;
-// 	while (i <= cmd_count)
-// 	{
-// 		pipes[i] = malloc(2 * sizeof(int));
-// 		if (!pipes[i])
-// 			return (free_pipes(pipes, i), NULL);
-// 		if (pipe(pipes[i]))
-// 		{
-// 			perror("Pipe: creation error");
-// 			return (free_pipes(pipes, i), NULL);
-// 		}
-// 		i++;
-// 	}
-// 	return (pipes);
-// }
 
 static size_t	cc_lst_size(char **cc)
 {
@@ -58,10 +24,10 @@ static size_t	cc_lst_size(char **cc)
 
 static char	**clear_path(int i, int path_size, char **paths)
 {
-	paths[i] = NULL;	
-	while (path_size > 0)	
-		if (paths[path_size--] != NULL)	
-			free(paths[path_size + 1]);	
+	paths[i] = NULL;
+	while (path_size > 0)
+		if (paths[path_size--] != NULL)
+			free(paths[path_size + 1]);
 	return (NULL);
 }
 
@@ -101,7 +67,6 @@ static char	**getpaths2(char **p, char ***cmds, size_t i)
 		return (free_double_char(p));
 	while (p[j])
 	{
-		
 		cmd_paths[j] = ft_strjoin(p[j], cmds[i][0]);
 		if (!cmd_paths[j])
 			return (free_double_char(p));
@@ -119,7 +84,7 @@ char	***get_commands_paths(int argc, char ***cmds, char **envp)
 	envp_paths = get_envp_path(envp);
 	if (!envp_paths)
 		return (NULL);
-	cmds_paths = ft_calloc(argc, sizeof(char **)); // Make list of list of path
+	cmds_paths = ft_calloc(argc, sizeof(char **));
 	if (!cmds_paths)
 		return (NULL);
 	i = 1;
